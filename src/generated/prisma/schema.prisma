@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model university {
+  name          String
+  domains       String[]
+  webPages      String[] @map("web_pages")
+  country       String?
+  alphaTwoCode  String?  @map("alpha_two_code") @db.VarChar(2)
+  stateProvince String?  @map("state_province")
+  favorite      Boolean  @default(false)
+  id            Int      @id @default(autoincrement())
+
+  @@map("universites")
+}
