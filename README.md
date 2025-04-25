@@ -33,7 +33,7 @@ A modern web application for searching and filtering universities worldwide, bui
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/NehaDadarwala/universitySearch.git
    cd university
    ```
 
@@ -48,7 +48,7 @@ A modern web application for searching and filtering universities worldwide, bui
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/NehaDadarwala/universitySearch.git
    cd university
    ```
 
