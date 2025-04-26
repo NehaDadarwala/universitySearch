@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "tsx src/scripts/seed.ts"
+    "seed": "tsx prisma/seed.ts"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.6.0",
@@ -40,5 +43,8 @@
     "tsx": "^4.19.3",
     "tw-animate-css": "^1.2.8",
     "typescript": "^5"
+  },
+  "tsx": {
+    "loader": "tsx"
   }
 }

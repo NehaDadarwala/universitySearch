@@ -32,4 +32,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Start the application and run initialization
-CMD ["sh", "-c", "./scripts/docker-init.sh && npx prisma migrate deploy && npm start"] 
+CMD ["sh", "-c", "./scripts/docker-init.sh && npx prisma migrate deploy && npx prisma db seed && npm start"] 
