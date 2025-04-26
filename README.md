@@ -34,7 +34,7 @@ A modern web application for searching and filtering universities worldwide, bui
 1. Clone the repository:
    ```bash
    git clone https://github.com/NehaDadarwala/universitySearch.git
-   cd university
+   cd universitySearch
    ```
 
 2. Build and start the containers:
@@ -49,7 +49,7 @@ A modern web application for searching and filtering universities worldwide, bui
 1. Clone the repository:
    ```bash
    git clone https://github.com/NehaDadarwala/universitySearch.git
-   cd university
+   cd universitySearch
    ```
 
 2. Install dependencies:
