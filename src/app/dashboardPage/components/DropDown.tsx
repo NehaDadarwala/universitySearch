@@ -21,7 +21,7 @@ const DropDown = ({
         <SelectTrigger>
           <SelectValue placeholder="Select an University" />
         </SelectTrigger>
-        <SelectContent className="z-50">
+        <SelectContent className="z-50 bg-white dark:bg-gray-800">
           {items.map((item: string) => (
             <SelectItem key={item} value={String(item)}>
               {item}
