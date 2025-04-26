@@ -166,21 +166,6 @@ university/
 - `POST /api/universities/favorites` - Add university to favorites
 - `DELETE /api/universities/favorites` - Remove university from favorites
 
-## Development
-
-### Running Tests
-```bash
-npm run test
-```
-
-### Building for Production
-```bash
-npm run build
-```
-
-### Linting
-```bash
-npm run lint
 ```
 
 ## Contributing
@@ -190,11 +175,3 @@ npm run lint
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Support
-
-For support, please open an issue in the GitHub repository or contact the maintainers.
