@@ -79,6 +79,11 @@ const Page = () => {
     setCurrentPage(page);
   };
 
+  const handleFavoriteToggle = async (id: number) => {
+    const url = `/api/universities/favorites?page=${currentPage}&pageSize=${pageSize}`;
+    await fetchData(url);
+  };
+
   return (
     <div className="flex gap-x-6 p-6">
       {/* Left side: Table */}
@@ -94,6 +99,7 @@ const Page = () => {
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
+          onFavoriteToggle={handleFavoriteToggle}
         />
       </div>
 

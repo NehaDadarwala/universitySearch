@@ -124,13 +124,22 @@ const Page = () => {
   };
 
   const clearFilters = () => {
-    setSelectedCountry("");
+    setSelectedCountry("Canada");
     setUniversityNameFilter(null);
     setCurrentPage(1);
   };
 
+  const handleCountrySelect = (value: string) => {
+    setSelectedCountry(value === "none" ? "" : value);
+  };
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+  };
+
+  const handleFavoriteToggle = async (id: number) => {
+    const url = `/api/universities?page=${currentPage}&pageSize=${pageSize}${selectedCountry ? `&country=${selectedCountry}` : ''}${universityNameFilter ? `&name=${universityNameFilter}` : ''}`;
+    await fetchData(url);
   };
 
   return (
@@ -140,7 +149,7 @@ const Page = () => {
         <SearchBox onChange={onUniversityNameFilter} />
         <DropDown
           items={uniqueCountries}
-          onSelect={setSelectedCountry}
+          onSelect={handleCountrySelect}
           selectedItem={selectedCountry}
         />
         <Button onClick={clearFilters}>Clear All Filters</Button>
@@ -160,6 +169,7 @@ const Page = () => {
           currentPage={currentPage}
           totalPages={totalPages}
           onPageChange={handlePageChange}
+          onFavoriteToggle={handleFavoriteToggle}
         />
       </div>
     </div>

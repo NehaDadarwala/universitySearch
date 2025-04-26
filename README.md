@@ -1,4 +1,4 @@
-# University Search Application
+# Universities Search App
 
 A modern web application for searching and filtering universities worldwide, built with Next.js, TypeScript, and PostgreSQL.
 
@@ -65,25 +65,75 @@ A modern web application for searching and filtering universities worldwide, bui
 
 4. Start the PostgreSQL database:
    ```bash
+   # Stop any existing PostgreSQL instances first
+   docker-compose down
+   
+   # Remove existing PostgreSQL data (if you're having authentication issues)
+   docker volume rm universitysearch_postgres_data
+   
+   # Start the database
    docker-compose up db
    ```
 
-5. Run database migrations:
+5. Wait for the database to be ready (you should see "database system is ready to accept connections" in the logs)
+
+6. Run database migrations:
    ```bash
    npx prisma migrate deploy
    ```
 
-6. Seed the database:
+7. Seed the database:
    ```bash
    npx tsx src/scripts/seed.ts
    ```
 
-7. Start the development server:
+8. Start the development server:
    ```bash
    npm run dev
    ```
 
-8. Access the application at `http://localhost:3000`
+9. Access the application at `http://localhost:3000`
+
+### Troubleshooting PostgreSQL Authentication Issues
+
+If you encounter PostgreSQL authentication errors, try these steps:
+
+1. Verify the database is running:
+   ```bash
+   docker ps | findstr postgres
+   ```
+
+2. Check if port 5432 is available:
+   ```bash
+   netstat -ano | findstr :5432
+   ```
+   If another process is using the port, stop it or change the port in docker-compose.yml
+
+3. Reset the database:
+   ```bash
+   # Stop all containers
+   docker-compose down
+   
+   # Remove the PostgreSQL volume
+   docker volume rm universitysearch_postgres_data
+   
+   # Start fresh
+   docker-compose up db
+   ```
+
+4. Verify your .env file matches these exact credentials:
+   ```
+   DATABASE_URL="postgresql://postgres:postgres@localhost:5432/universities"
+   ```
+
+5. Make sure no other PostgreSQL instances are running locally that might conflict with the Docker container
+
+6. Wait at least 10-15 seconds after the database container starts before running any Prisma commands
+
+If issues persist:
+- Check Docker logs: `docker-compose logs db`
+- Verify the database exists: `docker exec universitysearch_db_1 psql -U postgres -l`
+- Try connecting with a PostgreSQL client using the same credentials
 
 ## Project Structure
 

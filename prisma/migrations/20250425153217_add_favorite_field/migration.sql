@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE "universites" (
+CREATE TABLE "universities" (
     "name" TEXT NOT NULL,
     "domains" TEXT[],
     "web_pages" TEXT[],
@@ -9,5 +9,5 @@ CREATE TABLE "universites" (
     "favorite" BOOLEAN NOT NULL DEFAULT false,
     "id" SERIAL NOT NULL,
 
-    CONSTRAINT "universites_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "universitis_pkey" PRIMARY KEY ("id")
 );

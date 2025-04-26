@@ -16,6 +16,7 @@ interface UniversitiesTableProps {
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
+  onFavoriteToggle?: (id: number) => void;
 }
 
 const UniversitiesTable = ({
@@ -23,6 +24,7 @@ const UniversitiesTable = ({
   currentPage,
   totalPages,
   onPageChange,
+  onFavoriteToggle,
 }: UniversitiesTableProps) => {
   const [isUpdating, setIsUpdating] = useState<number | null>(null);
 
@@ -37,8 +39,8 @@ const UniversitiesTable = ({
         throw new Error('Failed to update favorite status');
       }
 
-      // Refresh the current page to show updated data
-      window.location.reload();
+      // Call the parent component's handler if provided
+      onFavoriteToggle?.(id);
     } catch (error) {
       console.error('Error toggling favorite:', error);
     } finally {

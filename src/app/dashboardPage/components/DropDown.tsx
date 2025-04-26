@@ -19,9 +19,10 @@ const DropDown = ({
     <>
       <Select value={selectedItem} onValueChange={onSelect}>
         <SelectTrigger>
-          <SelectValue placeholder="Select an University" />
+          <SelectValue placeholder="Select a Country" />
         </SelectTrigger>
-        <SelectContent className="z-50 bg-white dark:bg-gray-800">
+        <SelectContent className="z-50 bg-white dark:bg-gray-800 max-h-[300px] overflow-y-auto">
+          <SelectItem value="none">Clear</SelectItem>
           {items.map((item: string) => (
             <SelectItem key={item} value={String(item)}>
               {item}
