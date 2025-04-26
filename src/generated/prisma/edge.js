@@ -130,7 +130,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\My git repo\\UniversityNextJs\\university\\src\\generated\\prisma",
+      "value": "D:\\study\\universitySearch\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -141,15 +141,18 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "linux-musl-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\My git repo\\UniversityNextJs\\university\\prisma\\schema.prisma",
+    "sourceFilePath": "D:\\study\\universitySearch\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": null
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.6.0",
@@ -158,16 +161,17 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:Neha1248!@localhost:5432/universities?schema=public"
+        "value": null
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel university {\n  name          String\n  domains       String[]\n  webPages      String[] @map(\"web_pages\")\n  country       String?\n  alphaTwoCode  String?  @map(\"alpha_two_code\") @db.VarChar(2)\n  stateProvince String?  @map(\"state_province\")\n  favorite      Boolean  @default(false)\n  id            Int      @id @default(autoincrement())\n\n  @@map(\"universites\")\n}\n",
-  "inlineSchemaHash": "e08caf9861614cb4b3230c58c849caae833e7a222700418aee0747030f61e78a",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../src/generated/prisma\"\n  binaryTargets = [\"native\", \"linux-musl-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel university {\n  name          String\n  domains       String[]\n  webPages      String[] @map(\"web_pages\")\n  country       String?\n  alphaTwoCode  String?  @map(\"alpha_two_code\") @db.VarChar(2)\n  stateProvince String?  @map(\"state_province\")\n  favorite      Boolean  @default(false)\n  id            Int      @id @default(autoincrement())\n\n  @@map(\"universites\")\n}\n",
+  "inlineSchemaHash": "8a2aca7c735627a0fa3d1fc77003570176e65cc6716cb827b0996378903b7884",
   "copyEngine": true
 }
 config.dirname = '/'

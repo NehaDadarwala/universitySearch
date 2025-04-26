@@ -10,14 +10,14 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install
+# Install all dependencies
+RUN npm install --production=false
 
 # Copy Prisma schema
 COPY prisma ./prisma
 
-# Generate Prisma client
-RUN npx prisma generate
+# Generate Prisma client with the correct binary targets
+RUN npx prisma generate --schema=./prisma/schema.prisma
 
 # Copy the rest of the application
 COPY . .
@@ -32,4 +32,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Start the application and run initialization
-CMD ["sh", "-c", "./scripts/docker-init.sh && npm start"] 
+CMD ["sh", "-c", "./scripts/docker-init.sh && npx prisma migrate deploy && npm start"] 

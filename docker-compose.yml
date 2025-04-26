@@ -8,12 +8,15 @@ services:
     environment:
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/universities
       - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
       - .:/app
       - /app/node_modules
       - /app/.next
+    command: sh -c "npm install && npm run build && npx prisma migrate deploy && npm start"
 
   db:
     image: postgres:15-alpine
@@ -25,6 +28,11 @@ services:
       - POSTGRES_DB=universities
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
 volumes:
   postgres_data: 

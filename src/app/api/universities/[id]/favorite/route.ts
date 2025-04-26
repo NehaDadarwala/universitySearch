@@ -3,16 +3,14 @@ import { NextRequest, NextResponse } from "next/server"
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
-) {
-  try {
-    const id = parseInt(params.id);
-    if (isNaN(id)) {
-      return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
-    }
+  { params }: { params: Promise<{ id: string }> }
 
+) {
+  const { id } = await params // 'a', 'b', or 'c'
+
+  try {
     const university = await prisma.university.findUnique({
-      where: { id }
+      where: { id: parseInt(id) }
     });
 
     if (!university) {
@@ -20,10 +18,8 @@ export async function PATCH(
     }
 
     const updatedUniversity = await prisma.university.update({
-      where: { id },
-      data: {
-        favorite: !university.favorite
-      }
+      where: { id: parseInt(id) },
+      data: { favorite: !university.favorite }
     });
 
     return NextResponse.json(updatedUniversity);
@@ -34,4 +30,4 @@ export async function PATCH(
       { status: 500 }
     );
   }
-} 
+}
