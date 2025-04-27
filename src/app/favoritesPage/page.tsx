@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { ApiPerformanceMetrics } from "../utils/ApiPerformanceMetrics ";
 import ApiPerformanceDisplay from "./components/ApiPerformanceMetrics";
 import Link from 'next/link';
+import { ThemeToggle } from "@/components/theme-toggle";
+import { Header } from "@/components/common/header";
 
 interface UniversitiesResponse {
   universities: University[];
@@ -88,12 +90,7 @@ const Page = () => {
     <div className="flex gap-x-6 p-6">
       {/* Left side: Table */}
       <div className="w-[75%]">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold">Favorite Universities</h1>
-          <Link href="/">
-            <Button variant="outline">Back to Dashboard</Button>
-          </Link>
-        </div>
+        <Header title="Favorite Universities" showBackButton />
         <UniversitiesTable 
           universities={universities}
           currentPage={currentPage}

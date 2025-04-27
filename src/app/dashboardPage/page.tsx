@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { ApiPerformanceMetrics } from "../utils/ApiPerformanceMetrics ";
 import ApiPerformanceDisplay from "./components/ApiPerformanceMetrics";
 import Link from 'next/link';
+import { Header } from "@/components/common/header";
 
 interface UniversitiesResponse {
   universities: University[];
@@ -158,12 +159,14 @@ const Page = () => {
 
       {/* Table - Bottom on mobile, Left on desktop */}
       <div className="order-2 lg:order-1 w-full lg:w-[75%]">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl font-bold">All Universities</h1>
-          <Link href="/favoritesPage">
-            <Button variant="outline">View Favorites</Button>
-          </Link>
-        </div>
+        <Header 
+          title="All Universities" 
+          actions={
+            <Link href="/favoritesPage">
+              <Button variant="outline">View Favorites</Button>
+            </Link>
+          }
+        />
         <UniversitiesTable 
           universities={universities}
           currentPage={currentPage}
